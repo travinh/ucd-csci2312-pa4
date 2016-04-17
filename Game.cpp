@@ -487,14 +487,24 @@ namespace Gaming
 
     void Game::play(bool verbose)
     {
-        __verbose = verbose;
-        __status=PLAYING;
-
-        while (__status != OVER) {
-            round();
-            if (verbose) std::cout << *this;
+        __status = PLAYING;
+        if(verbose)
+        {
+             __verbose = verbose;
+             while(getNumResources())
+             {
+                 std::cout << *this << std::endl;
+                 round();
+             }
+            __status = OVER;
+            std::cout << *this << std::endl;
         }
-        if (!verbose) std::cout << *this;
+        else
+        {
+            while(getNumResources())
+                round();
+            __status = OVER;
+        }
 
     }
 
