@@ -534,6 +534,7 @@ namespace Gaming
          }
          os << std::endl << std::endl;
          return os;
+
     }
 
 
